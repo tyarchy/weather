@@ -1,0 +1,17 @@
+*{
+    box-sizing: border-box;    
+}
+
+header{
+    text-align: center;
+    color:cornsilk;
+    background-color: chocolate;
+}
+.container{
+    background-color: aquamarine;
+}
+
+.city{
+    border: 1px solid black
+}
+
