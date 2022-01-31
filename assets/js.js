@@ -10,92 +10,71 @@
 // WHEN I click on a city in the search history
 // THEN I am again presented with current and future conditions for that city
 
+var cityFormEl = document.querySelector("#city-form");
+var cityInputEl = document.querySelector("#city");
+var townName = document.querySelector("#town");
+var getweather = function () {
+  var city = cityInputEl.value.trim();
 
-var cityFormEl = document.querySelector("#city-form")
-var cityInputEl = document.querySelector("#city")
+  var apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=f0ff70779b3b3459372814ccdabbd7fd`;
 
+  console.log("start a string" + city + "end of the string");
 
+  console.log(`start the string ${city} end of string`);
 
-var getweather = function() {
+  fetch(apiUrl).then(function (response) {
+    response.json().then(function (data) {
+      townName.innerHTML = data.city.name;
 
-    var apiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=36.73&lon=-119.78&exclude=hourly,daily&appid=f0ff70779b3b3459372814ccdabbd7fd";
+      for (let i = 0; i < data.list.length; i += 8) {
+          var card = document.createElement("div");
+          var title = document.createElement("h4");
+          var temp = document.createElement("p");
+          
+          card.setAttribute(
+            "class",
+            "col-md-2 bg-danger text-white border border-dark mr-3"
+          );
+          title.innerHTML = data.list[i].dt_txt;
+          
+          card.innerHTML = "fish tacos";
+          document.querySelector("#cardBox").append(card);
+          card.append(title);
 
-    fetch(apiUrl).then(function(response) {
-        response.json().then(function(data) {
-          console.log(data);
-        });
-      });
-    };
-
- // search for a city
-  var formSubmitHandler = function(event) {
-    event.preventDefault();
-    console.log(event);
-
-    //get value from input element
-    var city = cityInputEl.value.trim();
-
-    if (city) {
-        getweather(city);
-        cityInputEl.value = "";
-    } else {
-        alert ("Enter a city you dummy")
-    }
-    
-  };
-
-  getweather();
-
-  cityFormEl.addEventListener("submit", formSubmitHandler);
-
-
-  
+          temp.innerHTML = data.list[i].dt_txt;
+          document.querySelector("#cardBox").append(temp);
+          card.append(temp);
 
 
 
+        console.log(data);
+      }
 
+      displaycity(data);
+    });
+  });
+};
 
+// search for a city
+var formSubmitHandler = function (event) {
+  event.preventDefault();
+  console.log(event);
 
+  //get value from input element
 
+  if (city) {
+    getweather(city);
+    cityInputEl.value = "";
+  } else {
+    alert("Enter a city you dummy");
+  }
+};
 
+// getweather();
 
+cityFormEl.addEventListener("submit", formSubmitHandler);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//function to display city weather to html
+var displaycity = function (weather) {
+  console.log();
+};
