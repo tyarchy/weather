@@ -17,59 +17,27 @@
   <div class="container mb-2">
     <div class="row">
       <div class="col-6 col-sm-3">
-        <h2>Search for city</h2>
+        <h2>Weather City Search</h2>
         <div class=mb-1>
-          <form id="city-form">
+          <form id="city-form" class="mt-1">
             <label class="form-label" for="city"></label>
-          <!-- autofocus -->
-          <input id="city" type="text" autofocus="true" class="form-input"></input>
-          <button class="btn btn-primary" type="submit">Search</button>
-        </form>
+             <input id="city" type="text" autofocus="true" class="form-input"></input>
+            <button class="btn btn-primary" type="submit">Search</button>
+          </form>
         </div>
       </div>
       <div>
+
         <div class="col-12 col-md-12, city bg-light">
-          <h2 id="town">Hell Hole</h2>
-          <h3>temp</h3>
-          <h3>humidity</h3>
-          <h3>UV</h3>
+          <h2 id="town">Your Town</h2>
+          <h3 id="degrees">temp</h3>
+          <h3 id="humidity">humidity</h3>
+          <h3 id="uv">UV</h3>
         </div>
+
         <div class="col-12 col-md-12">
           <h3>5 Day Outlook:</h3>
-
-          <div class="row" id="cardBox">
-            <div class="col-md-2 bg-danger text-white border border-dark mr-3">
-              <h4>day</h4>
-              <p>temp</p>
-              <p>wind</p>
-              <p>humidity</p>
-
-            </div>
-            <div class="col-md-2 bg-danger text-white border border-dark mr-3">
-              <h4>day</h4>
-              <p>temp</p>
-              <p>wind</p>
-              <p>humidity</p>
-            </div>
-            <div class="col-md-2 bg-danger text-white border border-dark mr-3">
-              <h4>day</h4>
-              <p>temp</p>
-              <p>wind</p>
-              <p>humidity</p>
-            </div>
-            <div class="col-md-2 bg-danger text-white border border-dark mr-3">
-              <h4>day</h4>
-              <p>temp</p>
-              <p>wind</p>
-              <p>humidity</p>
-            </div>
-            <div class="col-md-2 bg-danger text-white border border-dark mr-3">
-              <h4>day</h4>
-              <p>temp</p>
-              <p>wind</p>
-              <p>humidity</p>
-            </div>
-          </div>
+          <div class="row" id="cardBox"></div>
         </div>
       </div>
     </div>

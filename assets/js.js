@@ -13,44 +13,61 @@
 var cityFormEl = document.querySelector("#city-form");
 var cityInputEl = document.querySelector("#city");
 var townName = document.querySelector("#town");
+var degrees = document.querySelector("#degrees");
+var muggy = document.querySelector("#humidity");
+var feels = document.querySelector("#uv");
+
+
+//Get the weather function
 var getweather = function () {
   var city = cityInputEl.value.trim();
 
   var apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=f0ff70779b3b3459372814ccdabbd7fd`;
 
-  console.log("start a string" + city + "end of the string");
-
-  console.log(`start the string ${city} end of string`);
-
+  
   fetch(apiUrl).then(function (response) {
     response.json().then(function (data) {
-      townName.innerHTML = data.city.name;
 
+//Print the 5 day forcast 
+      townName.innerHTML = data.city.name;
+      degrees.innerHTML = "Temp: " + data.list[0].main.temp;
+      muggy.innerHTML = "Humidity: " + data.list[0].main.humidity;
+      feels.innerHTML = "Feels like: " + data.list[0].main.feels_like;
+      
+      
       for (let i = 0; i < data.list.length; i += 8) {
           var card = document.createElement("div");
-          var title = document.createElement("h4");
+          var date = document.createElement("p");
           var temp = document.createElement("p");
+          var wind = document.createElement("p");
+          var humid = document.createElement("p");        
           
           card.setAttribute(
             "class",
             "col-md-2 bg-danger text-white border border-dark mr-3"
           );
-          title.innerHTML = data.list[i].dt_txt;
+         
           
-          card.innerHTML = "fish tacos";
+          date.innerHTML = data.list[i].dt_txt;        
           document.querySelector("#cardBox").append(card);
-          card.append(title);
-
-          temp.innerHTML = data.list[i].dt_txt;
+          card.append(date);
+                   
+          temp.innerHTML ="Temp: " + data.list[i].main.temp;
           document.querySelector("#cardBox").append(temp);
           card.append(temp);
 
+          wind.innerHTML = "Wind: " + data.list[i].wind.speed;
+          document.querySelector("#cardBox").append(wind);
+          card.append(wind);
 
-
-        console.log(data);
+          humid.innerHTML ="Humidity: " + data.list[i].main.humidity;
+          document.querySelector("#cardBox").append(humid);
+          card.append(humid);
+        
       }
 
       displaycity(data);
+      
     });
   });
 };
@@ -61,20 +78,13 @@ var formSubmitHandler = function (event) {
   console.log(event);
 
   //get value from input element
-
   if (city) {
     getweather(city);
     cityInputEl.value = "";
   } else {
-    alert("Enter a city you dummy");
+    alert("Enter a city");
   }
 };
 
-// getweather();
-
 cityFormEl.addEventListener("submit", formSubmitHandler);
 
-//function to display city weather to html
-var displaycity = function (weather) {
-  console.log();
-};
