@@ -2,7 +2,7 @@
 ###  Some Weather is a search website that can give you some weather stats for a given city.
   
 ## Usage and Applications
-### This app can help know what is happening outside for almost any city.  If you need to know some weather for a city you are in you can get some information.
+### This app can help you find out what is happening outside for almost any city.  If you are making plans Some Weather can help you with some weather information.
 
 <p>&nbsp;</p>  
 
